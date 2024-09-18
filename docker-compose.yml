@@ -1,0 +1,21 @@
+services:
+  server:
+    build: .
+    restart: always
+    ports:
+      - 8080:8080
+    depends_on:
+      - mysqldb
+
+  mysqldb:
+    platform: linux/x86_64
+    image: mysql:latest
+    restart: always
+    ports:
+      - 3308:3306  # Corrected port mapping
+    environment:
+      MYSQL_DATABASE: tour_booking_app_db
+      MYSQL_USER: az98
+      MYSQL_PASSWORD: az98
+      MYSQL_ROOT_PASSWORD: az98
+      MYSQL_ROOT_HOST: 127.0.0.1
